@@ -1,58 +1,31 @@
-jQuery(function($) {
+var append = function(){
+  $('.dice').append('<div class="die">0</div>')
+}
 
-  function Die() {};
-
-  Die.prototype.addDie = function() {
-        $('.dice').append('<div class="die">0</div>');
-      };
-
-   Die.prototype.rollDie = function() {
-        $('.die').each(function(k, die) {
-        var value = Math.floor((Math.random()*6)+1);
-        $(die).text(value);
-        });
-      };
-
-  var game = new Die();
-
-  $('#roller button.add').on('click', game.addDie());
-  $('#roller button.roll').on('click', game.rollDie());
-
+var randomNumber = function(){
+  $('.die').each(function(k, die) {
+    var value = Math.floor((Math.random()*6)+1);
+    $(die).text(value);
   });
+}
 
-  // function addDie() {
-  //   $('.dice').append('<div class="die">0</div>');
-  // };
 
-  // function rollDie() {
-  //   $('.die').each(function(k, die) {
-  //   var value = Math.floor((Math.random()*6)+1);
-  //   $(die).text(value);
-  //   });
-  // };
+function Die() {};
 
-  // $(document).ready(function() {
-  //   $('#roller button.add').on('click', addDie);
-  //   $('#roller button.roll').on('click', rollDie);
-  // });
+Die.prototype = {
+  addDie: function() {
+    append();
+  },
+  rollDie: function() {
+    randomNumber();
+  }
+}
 
-// *************
 
-  // function Die() {
-  //     this.addDie = function() {
-  //       $('.dice').append('<div class="die">0</div>');
-  //     };
+var game = new Die();
+$(document).ready(function() {
+  $('#roller button.add').on('click', game.addDie);
+  $('#roller button.roll').on('click', game.rollDie);
 
-  //     this.rollDie = function() {
-  //       $('.die').each(function(k, die) {
-  //       var value = Math.floor((Math.random()*6)+1);
-  //       $(die).text(value);
-  //       });
-  //     };
-  // };
-
-  // var game = new Die();
-
-  // $('#roller button.add').on('click', game.addDie());
-  // $('#roller button.roll').on('click', game.rollDie());
+});
 
