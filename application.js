@@ -1,22 +1,24 @@
 jQuery(function($) {
 
-  function Die() {
-      this.addDie = function() {
+  function Die() {};
+
+  Die.prototype.addDie = function() {
         $('.dice').append('<div class="die">0</div>');
       };
 
-      this.rollDie = function() {
+   Die.prototype.rollDie = function() {
         $('.die').each(function(k, die) {
         var value = Math.floor((Math.random()*6)+1);
         $(die).text(value);
         });
       };
-  };
 
   var game = new Die();
 
   $('#roller button.add').on('click', game.addDie());
   $('#roller button.roll').on('click', game.rollDie());
+
+  });
 
   // function addDie() {
   //   $('.dice').append('<div class="die">0</div>');
@@ -34,4 +36,23 @@ jQuery(function($) {
   //   $('#roller button.roll').on('click', rollDie);
   // });
 
-});
+// *************
+
+  // function Die() {
+  //     this.addDie = function() {
+  //       $('.dice').append('<div class="die">0</div>');
+  //     };
+
+  //     this.rollDie = function() {
+  //       $('.die').each(function(k, die) {
+  //       var value = Math.floor((Math.random()*6)+1);
+  //       $(die).text(value);
+  //       });
+  //     };
+  // };
+
+  // var game = new Die();
+
+  // $('#roller button.add').on('click', game.addDie());
+  // $('#roller button.roll').on('click', game.rollDie());
+
