@@ -15,17 +15,18 @@ var randNum = function(k, die){
 function Game(){
 }
 
-Game.prototype.addDie = function(){
-  $('#roller button.add').on('click', showDie);
+Game.prototype = {
+  addDie: function(){
+    showDie();
+  },
+  rollDie: function(){
+    randDie();
+  }
 }
 
-Game.prototype.rollDie = function(){
-  $('#roller button.roll').on('click', randDie);
-}
 
-
+var game = new Game();
 $(document).ready(function() {
-  var game = new Game();
-  game.addDie();
-  game.rollDie();
+  $('#roller button.add').on('click', game.addDie);
+  $('#roller button.roll').on('click', game.rollDie);
 });
